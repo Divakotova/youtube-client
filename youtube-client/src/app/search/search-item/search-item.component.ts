@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchItem } from './search-item.component.model';
 
 @Component({
   selector: 'app-search-item',
   templateUrl: './search-item.component.html',
-  styleUrls: ['./search-item.component.scss']
+  styleUrls: ['./search-item.component.scss'],
 })
-export class SearchItemComponent implements OnInit {
+export class SearchItemComponent {
   card: SearchItem = {
     snippet: {
       publishedAt: '',
@@ -15,7 +15,7 @@ export class SearchItemComponent implements OnInit {
         default: {
           url: '',
           width: 0,
-          height: 0
+          height: 0,
         },
       },
       channelTitle: '',
@@ -25,13 +25,7 @@ export class SearchItemComponent implements OnInit {
       likeCount: '',
       dislikeCount: '',
       favoriteCount: '',
-      commentCount: ''
-    }
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+      commentCount: '',
+    },
+  };
 }

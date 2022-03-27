@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { SearchItem } from '../search-item/search-item.component.model';
 
 @Component({
   selector: 'app-card-details',
   templateUrl: './card-details.component.html',
-  styleUrls: ['./card-details.component.scss']
+  styleUrls: ['./card-details.component.scss'],
 })
-export class CardDetailsComponent implements OnInit {
+export class CardDetailsComponent {
   cardDetails: SearchItem = {
     id: '',
     snippet: {
@@ -17,7 +17,7 @@ export class CardDetailsComponent implements OnInit {
         default: {
           url: '',
           width: 0,
-          height: 0
+          height: 0,
         },
       },
       channelTitle: '',
@@ -27,13 +27,7 @@ export class CardDetailsComponent implements OnInit {
       likeCount: '',
       dislikeCount: '',
       favoriteCount: '',
-      commentCount: ''
-    }
-  }
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+      commentCount: '',
+    },
+  };
 }
