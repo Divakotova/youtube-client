@@ -1,0 +1,8 @@
+<div class="filtering-block" *ngIf="filter">
+  <h3>Sorting by:</h3>
+  <div class="filtering-block_types">
+    <app-sorting-button [sortingType]="sortingTypes[0]"></app-sorting-button>
+    <app-sorting-button [sortingType]="sortingTypes[1]"></app-sorting-button>
+    <app-input-for-filtering [filterValue]="filterValue"></app-input-for-filtering>
+  </div>
+</div>

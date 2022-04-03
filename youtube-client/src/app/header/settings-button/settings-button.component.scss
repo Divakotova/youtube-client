@@ -1,0 +1,18 @@
+.settings-button {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+
+  &_icon {
+    width: 15px;
+    top: 4.5px;
+    left: 4.5px;
+  }
+}
+
+.mat-raised-button {
+  padding: 0;
+  min-width: 24px;
+  line-height: 15px;
+  border-top: 0;
+}

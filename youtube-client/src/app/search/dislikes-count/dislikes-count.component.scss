@@ -1,0 +1,17 @@
+.statistic_block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .mat-icon {
+    width: 15px;
+    height: 13px;
+  }
+
+  p {
+    margin-bottom: 0;
+    margin-left: 3px;
+    font-size: 10px;
+    line-height: 12px;
+  }
+}

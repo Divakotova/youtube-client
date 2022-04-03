@@ -1,1 +1,10 @@
-<p>header works!</p>
+<div class="header">
+  <div class="search">
+    <app-logo></app-logo>
+    <app-search-and-submit></app-search-and-submit>
+    <app-settings-button (settings)="handleClick()"></app-settings-button>
+  </div>
+  <app-login-block></app-login-block>
+</div>
+<app-filtering-block [filter]="filter"></app-filtering-block>
+
