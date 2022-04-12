@@ -1,0 +1,14 @@
+<div [class]="className.statistics">
+  <app-statistics-count [response]="cardDetails.statistics.viewCount">
+    <span class="material-icons">visibility</span>
+  </app-statistics-count>
+  <app-statistics-count [response]="cardDetails.statistics.likeCount">
+    <span class="material-icons">favorite</span>
+  </app-statistics-count>
+  <app-statistics-count [response]="cardDetails.statistics.dislikeCount">
+    <mat-icon class="statistic_icon" style="width: 15px; height: 13px;" svgIcon="dislike" aria-hidden="false" aria-label="Dislikes icon"></mat-icon>
+  </app-statistics-count>
+  <app-statistics-count [response]="cardDetails.statistics.commentCount">
+    <mat-icon class="statistic_icon" style="width: 15px; height: 13px;" svgIcon="comments" aria-hidden="false" aria-label="Comments icon"></mat-icon>
+  </app-statistics-count>
+</div>

@@ -1,0 +1,10 @@
+<h2 class="login-form_title">{{login}}</h2>
+<h3 class="form-title">login</h3>
+<form>
+    <input class="login-form_input" matInput placeholder="" name="loginInput" [(ngModel)]="loginInput">
+</form>
+<h3 class="form-title">password</h3>
+<form>
+    <input class="login-form_input" matInput placeholder="" name="passwordInput" [(ngModel)]="passwordInput">
+</form>
+  <app-button [buttonProps]="buttonProps" (click)="addLogin()"></app-button>

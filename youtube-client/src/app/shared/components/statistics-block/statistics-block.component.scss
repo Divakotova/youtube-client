@@ -1,0 +1,21 @@
+.statistics {
+  width: 202px;
+  height: 13px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.statistics-details {
+  width: 202px;
+  height: 13px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  right: 10%;
+  bottom: 24px;
+}
+
+.material-icons {
+  font-size: 18px;
+  height: 13px;
+}
