@@ -1,0 +1,9 @@
+<div class="card">
+  <app-video-thumbnail [className]="classes" [response]="searchResults.snippet.thumbnails.medium"></app-video-thumbnail>
+  <app-statistics-block [className]="classes" [cardDetails]="searchResults"></app-statistics-block>
+  <app-video-title [className]="classes" [response]="searchResults"></app-video-title>
+  <a [routerLink]="addLink(searchResults.id)">
+    <app-button [buttonProps]="buttonProps"></app-button>
+  </a>
+  <div [style.backgroundColor]="underlining(searchResults.snippet.publishedAt)" class="card_underlining"></div>
+</div>

@@ -1,0 +1,12 @@
+<div class="header">
+  <div class="search">
+    <app-logo></app-logo>
+    <app-search-and-submit></app-search-and-submit>
+    <app-button [buttonProps]="buttonProps" (click)="handleClick()">
+      <mat-icon class="settings-button_icon" style="width: 15px;" svgIcon="settings" aria-hidden="false" aria-label="Settings icon"></mat-icon>
+    </app-button>
+  </div>
+  <app-login-block></app-login-block>
+</div>
+<app-filtering-block [filter]="filter"></app-filtering-block>
+
