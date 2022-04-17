@@ -1,0 +1,26 @@
+<h3 class="card-title">Create new card</h3>
+<form [formGroup]="adminForm" novalidate class="new-card">
+  <label class="new-card_title" for="new-card-title">Title</label>
+  <input type="text" id="new-card-title" class="new-card_input" placeholder="Please enter a title" (blur)="checkFormStatus(this.adminForm)" formControlName="cardTitle">
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardTitle') && adminForm.controls['cardTitle'].value.length<=3">
+    The title is too short</div>
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardTitle') && adminForm.controls['cardTitle'].value.length>20">
+    The title is too long</div>
+  <label class="new-card_title" for="new-card-descr">Description</label>
+  <input type="text" id="new-card-descr" class="new-card_input" (blur)="checkFormStatus(this.adminForm)" formControlName="cardDescription">
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardDescription')">
+    The description is too long</div>
+  <label class="new-card_title" for="new-card-img">Img</label>
+  <input type="text" id="new-card-img" class="new-card_input" placeholder="Please enter a link to the image" (blur)="checkFormStatus(this.adminForm)" formControlName="cardImg">
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardImg')">
+    The image link is invalid</div>
+  <label class="new-card_title" for="new-card-video">Link video</label>
+  <input type="text" id="new-card-video" class="new-card_input" placeholder="Please enter a link to the video" (blur)="checkFormStatus(this.adminForm)" formControlName="cardVideo">
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardVideo')">
+    The video link is invalid</div>
+  <label class="new-card_title" for="new-card-date">Date</label>
+  <input type="text" id="new-card-date" class="new-card_input" placeholder="Please enter a creation date" onfocus="(this.type = 'date')" (blur)="checkFormStatus(this.adminForm)" formControlName="cardDate">
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardDate')">
+    The date is invalid</div>
+  <app-button [buttonProps]="buttonProps" (click)="addCard(adminForm)"></app-button>
+</form>

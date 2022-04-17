@@ -25,7 +25,7 @@ export class YoutubeService {
     if (args) {
       args = args.toLowerCase();
       const searchResults = this.response.items.filter(function (
-        data: SearchItem
+        data: SearchItem,
       ): boolean {
         return JSON.stringify(data).toLowerCase().includes(args);
       });

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CoreService } from '@core/services/core.service';
 import { Button } from '@shared/models/shared.model';
 import { Subscription } from 'rxjs';
@@ -12,10 +13,6 @@ import { LoginService } from '../../services/login.service';
 export class SingInPageComponent implements OnInit, OnDestroy {
   public login: string;
 
-  public loginInput: string;
-
-  public passwordInput: string;
-
   public buttonProps: Button = {
     type: 'submit',
     class: 'login-form_submit',
@@ -24,16 +21,27 @@ export class SingInPageComponent implements OnInit, OnDestroy {
 
   public logSubscription: Subscription;
 
+  public loginForm: FormGroup;
+
   constructor(
     private readonly loginService: LoginService,
     private coreService: CoreService,
-  ) {}
+  ) {
+    this.loginForm = new FormGroup({
+      userEmail: new FormControl('', [Validators.required, Validators.email]),
+      userPassword: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          '(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,}',
+        ),
+      ]),
+    });
+  }
 
   ngOnInit(): void {
     this.logSubscription = this.loginService.logValue$.subscribe(
-      (logValue) => (this.login = logValue),
+      (logValue) => (this.login = this.buttonProps.content = logValue),
     );
-    this.buttonProps.content = this.login;
   }
 
   ngOnDestroy(): void {
@@ -43,7 +51,11 @@ export class SingInPageComponent implements OnInit, OnDestroy {
   }
 
   public addLogin(): void {
-    this.loginService.checkLogin(this.loginInput, this.passwordInput);
+    this.loginService.checkLogin(this.submit());
     this.coreService.goMainPage();
+  }
+
+  public submit() {
+    return this.loginForm;
   }
 }

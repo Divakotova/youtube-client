@@ -1,4 +1,4 @@
-<button [type]="buttonProps.type" [class]="buttonProps.class" mat-raised-button color="primary">
+<button [type]="buttonProps.type" [class]="buttonProps.class" mat-raised-button color="primary" [disabled]="buttonProps.disabled">
   <ng-content></ng-content>
   {{buttonProps.content}}
 </button>

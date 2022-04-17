@@ -2,21 +2,42 @@
   margin: auto;
   margin-top: 45px;
   width: 344px;
-  height: 248px;
+  min-height: 258px;
   display: flex;
   flex-direction: column;
   border-radius: 5px;
   background-color: #F2F2F2;
 
+  form {
+    margin-bottom: 24px;
+  }
+
   .login-form_title {
     margin: 28px 14px 10px 20px;
   }
   .login-form_input {
-    margin-left: 25px;
+    margin: 5px 5px 0 25px;
     width: 304px;
     height: 35px;
     background: #E0E0E0;
   }
+
+  .login-form_input.ng-touched.ng-invalid {
+    border:solid red 2px;
+  }
+
+  .login-form_input.ng-touched.ng-valid {
+    border:solid green 2px;
+  }
+
+  .error-form {
+    position: relative;
+    margin-left: 25px;
+    color: red;
+    font-size: 10px;
+    line-height: normal;
+  }
+
   .form-title {
     margin-left: 25px;
     margin-bottom: 5px;

@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class LoginService {
   private logSubject: BehaviorSubject<string> = new BehaviorSubject(
     this.checkLocalStorage(),
@@ -19,14 +18,15 @@ export class LoginService {
     return localStorage.getItem('login') ? 'Logout' : 'Login';
   }
 
-  public checkLogin(valueLog: string, valuePass: string): void {
+  public checkLogin(form: FormGroup): void {
     if (this.checkLocalStorage() === 'Logout') {
       localStorage.clear();
       this.changeLog('Login');
       return;
     }
-    if (valueLog && valuePass) {
-      localStorage.setItem('login', valueLog);
+    if (form.status === 'VALID') {
+      const userLogin = JSON.stringify(form.value);
+      localStorage.setItem('login', userLogin);
       this.changeLog('Logout');
       return;
     }

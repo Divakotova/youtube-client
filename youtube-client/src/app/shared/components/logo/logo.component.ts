@@ -12,11 +12,11 @@ export class LogoComponent {
   constructor(
     private matIconRegistry: MatIconRegistry,
     private domSanitizer: DomSanitizer,
-    private coreService: CoreService
+    private coreService: CoreService,
   ) {
     this.matIconRegistry.addSvgIcon(
       'logo',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/svg/logo.svg')
+      this.domSanitizer.bypassSecurityTrustResourceUrl('./assets/svg/logo.svg'),
     );
   }
 

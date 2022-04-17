@@ -7,14 +7,19 @@ import { Button } from '@shared/models/shared.model';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
+  public route: any;
+
   public filter: boolean;
 
   public buttonProps: Button = {
     type: 'button',
     class: 'settings-button',
+    disabled: false,
   };
 
   public handleClick(): void {
-    this.filter = !this.filter;
+    if (window.location.pathname === '/main') {
+      this.filter = !this.filter;
+    }
   }
 }

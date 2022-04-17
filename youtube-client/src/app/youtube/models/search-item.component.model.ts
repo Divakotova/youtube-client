@@ -14,7 +14,7 @@ export interface Snippet {
     high: Thumbnails;
     maxres: Thumbnails;
   };
-  channelTitle: string;
+  channelTitle?: string;
 }
 
 export interface SearchItem {
