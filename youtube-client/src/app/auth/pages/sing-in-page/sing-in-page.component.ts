@@ -39,8 +39,8 @@ export class SingInPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.logSubscription = this.loginService.logValue$.subscribe(
-      (logValue) => (this.login = this.buttonProps.content = logValue),
+    this.logSubscription = this.coreService.logSubject.subscribe(
+      (logValue) => (this.login = logValue),
     );
   }
 

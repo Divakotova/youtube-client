@@ -2,10 +2,9 @@
   <a routerLink="/admin">
     <button mat-raised-button color="primary">Admin</button>
   </a>
-
-  <h3>Your name</h3>
-  <a routerLink="/auth/sing-in">
+  <div class="login-block_button" (click)="logout()">
+    <h3 class="login-value" >{{this.login}}</h3>
     <span class="material-icons">account_circle</span>
-  </a>
+  </div>
 </div>
 

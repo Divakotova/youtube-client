@@ -12,18 +12,17 @@ export interface Snippet {
     default: Thumbnails;
     medium: Thumbnails;
     high: Thumbnails;
-    maxres: Thumbnails;
   };
   channelTitle?: string;
 }
 
 export interface SearchItem {
-  id?: string;
+  id: string;
   snippet: Snippet;
   statistics: {
     viewCount: string;
     likeCount: string;
-    dislikeCount: string;
+    dislikeCount?: string;
     favoriteCount: string;
     commentCount: string;
   };

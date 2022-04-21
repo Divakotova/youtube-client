@@ -1,33 +1,21 @@
 import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { CoreService } from '@core/services/core.service';
 
 @Injectable()
 export class LoginService {
-  private logSubject: BehaviorSubject<string> = new BehaviorSubject(
-    this.checkLocalStorage(),
-  );
-
-  logValue$: Observable<string> = this.logSubject.asObservable();
-
-  public changeLog(newValue: string): void {
-    this.logSubject.next(newValue);
-  }
-
-  public checkLocalStorage(): string {
-    return localStorage.getItem('login') ? 'Logout' : 'Login';
-  }
+  constructor(private coreService: CoreService) {}
 
   public checkLogin(form: FormGroup): void {
-    if (this.checkLocalStorage() === 'Logout') {
+    if (this.coreService.checkLocalStorage() === 'Logout') {
       localStorage.clear();
-      this.changeLog('Login');
+      this.coreService.changeLog('Login');
       return;
     }
     if (form.status === 'VALID') {
       const userLogin = JSON.stringify(form.value);
       localStorage.setItem('login', userLogin);
-      this.changeLog('Logout');
+      this.coreService.changeLog('Logout');
       return;
     }
   }

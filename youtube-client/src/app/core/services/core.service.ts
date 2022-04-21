@@ -1,21 +1,31 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subject, BehaviorSubject, Observable } from 'rxjs';
+import { Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoreService {
-  constructor(private router: Router) {}
-
-  private valueSubject: BehaviorSubject<string> = new BehaviorSubject('');
-
-  searchValue$: Observable<string> = this.valueSubject.asObservable();
-
   public filter$ = new Subject<string>();
 
+  public searchValue: BehaviorSubject<string> = new BehaviorSubject('');
+
+  public logSubject: BehaviorSubject<string> = new BehaviorSubject(
+    this.checkLocalStorage(),
+  );
+
+  constructor(private router: Router) {}
+
+  public changeLog(newValue: string): void {
+    this.logSubject.next(newValue);
+  }
+
+  public checkLocalStorage(): string {
+    return localStorage.getItem('login') ? 'Logout' : 'Login';
+  }
+
   public changeSearchValue(newValue: string) {
-    this.valueSubject.next(newValue);
+    this.searchValue.next(newValue);
   }
 
   public changeFilter(filter: string): void {

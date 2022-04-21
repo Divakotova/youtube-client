@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchItem } from '../../models/search-item.component.model';
-import { YoutubeService } from '@youtube/services/youtube.service';
 import { SearchItemService } from '@youtube/services/search-item.service';
 import { Details } from '@youtube/models/card-details.model';
 import { Button } from '@shared/models/shared.model';
+import { HttpService } from '@youtube/services/http.service';
 
 @Component({
   selector: 'app-card-details',
@@ -29,20 +29,24 @@ export class CardDetailsComponent implements OnInit {
 
   constructor(
     private router: ActivatedRoute,
-    private youtubeService: YoutubeService,
     private cardService: SearchItemService,
+    private httpService: HttpService
   ) {}
 
   ngOnInit(): void {
     this.routerId = this.router.snapshot.params['id'];
-    this.cardDetails = this.selectCard(this.routerId);
+    this.selectCard(this.routerId);
   }
 
   public underlining(date: string): string {
     return this.cardService.underlining(date);
   }
 
-  public selectCard(id: string): SearchItem {
-    return this.youtubeService.selectCard(id);
+  public selectCard(id: string): void {
+    if (id) {
+      this.httpService
+        .getDetailsId([id])
+        .subscribe((data) => (this.cardDetails = data.items[0]));
+    }
   }
 }

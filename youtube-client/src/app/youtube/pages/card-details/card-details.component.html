@@ -5,9 +5,9 @@
   </app-button>
   </a>
   <div class="details-wrapper">
-    <app-video-thumbnail [className]="classes" [response]="cardDetails.snippet.thumbnails.maxres"></app-video-thumbnail>
+    <app-video-thumbnail [className]="classes" [response]="cardDetails.snippet.thumbnails.high"></app-video-thumbnail>
     <div class="card-details">
-      <app-video-title [className]="classes" [response]="cardDetails"></app-video-title>
+      <app-video-title [className]="classes" [response]="cardDetails.snippet.title"></app-video-title>
       <h4 class="card-details_minor-title">Details</h4>
       <p class="card-details_description">{{cardDetails.snippet.description}}</p>
       <app-statistics-block [className]="classes" [cardDetails]="cardDetails"></app-statistics-block>

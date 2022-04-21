@@ -1,6 +1,7 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CoreService } from '@core/services/core.service';
-import { Subscription } from 'rxjs';
+import { HttpService } from '@youtube/services/http.service';
+import { debounceTime, Subscription } from 'rxjs';
 import { SearchItem } from '../../models/search-item.component.model';
 import { YoutubeService } from '../../services/youtube.service';
 
@@ -20,20 +21,20 @@ export class MainPageComponent implements OnInit, OnDestroy {
 
   public filterSubscription: Subscription;
 
-  @Input() public searchValue: string;
-
   constructor(
-    private readonly searchService: CoreService,
-    private readonly filterService: CoreService,
+    private readonly coreService: CoreService,
     private youtubeService: YoutubeService,
+    private httpService: HttpService
   ) {}
 
   ngOnInit(): void {
-    this.searchSubscription = this.searchService.searchValue$.subscribe(
-      (searchValue) => this.search(searchValue),
-    );
-    this.filterSubscription = this.filterService.filter$.subscribe((filter) =>
-      this.changeFilter(filter),
+    this.searchSubscription = this.coreService.searchValue
+      .pipe(debounceTime(600))
+      .subscribe((searchValue) =>
+        searchValue.length >= 3 ? this.search(searchValue) : false
+      );
+    this.filterSubscription = this.coreService.filter$.subscribe((filter) =>
+      this.changeFilter(filter)
     );
   }
 
@@ -53,6 +54,11 @@ export class MainPageComponent implements OnInit, OnDestroy {
   }
 
   public search(args: string): SearchItem[] | void {
-    this.searchResults = this.youtubeService.search(args);
+    if (args) {
+      this.httpService
+        .getSearchList(args)
+        .subscribe((data) => (this.searchResults = data.items));
+      this.youtubeService.changeSearch(this.searchResults);
+    }
   }
 }
