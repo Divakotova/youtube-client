@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, CanLoad, Router, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,19 +7,11 @@ import { Observable } from 'rxjs';
 export class AuthGuard implements CanActivate, CanLoad {
   constructor(private router: Router) {}
 
-  canActivate():
-  | Observable<boolean | UrlTree>
-  | Promise<boolean | UrlTree>
-  | boolean
-  | UrlTree {
+  canActivate(): boolean | UrlTree {
     return this.handle();
   }
 
-  canLoad():
-  | Observable<boolean | UrlTree>
-  | Promise<boolean | UrlTree>
-  | boolean
-  | UrlTree {
+  canLoad(): boolean | UrlTree {
     return this.handle();
   }
 

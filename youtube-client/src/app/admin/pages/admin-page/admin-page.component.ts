@@ -44,14 +44,13 @@ export class AdminPageComponent {
     return this.adminService.checkFormInput(form, type);
   }
 
-  public checkFormStatus(form: FormGroup): boolean {
-    return (this.buttonProps.disabled =
-      this.adminService.checkFormStatus(form));
+  public checkFormStatus(form: FormGroup): void {
+    this.buttonProps.disabled = this.adminService.checkFormStatus(form);
   }
 
   public addCard(form: FormGroup): void {
     if (form.status === 'VALID') {
-      return;
+      return console.log(form);
     }
   }
 }

@@ -2,9 +2,9 @@
 <form [formGroup]="adminForm" novalidate class="new-card">
   <label class="new-card_title" for="new-card-title">Title</label>
   <input type="text" id="new-card-title" class="new-card_input" placeholder="Please enter a title" (blur)="checkFormStatus(this.adminForm)" formControlName="cardTitle">
-  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardTitle') && adminForm.controls['cardTitle'].value.length<=3">
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardTitle') && adminForm.controls['cardTitle'].errors!['minlength']">
     The title is too short</div>
-  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardTitle') && adminForm.controls['cardTitle'].value.length>20">
+  <div class="error-form" *ngIf="checkFormInput(adminForm, 'cardTitle') && adminForm.controls['cardTitle'].errors!['maxlength']">
     The title is too long</div>
   <label class="new-card_title" for="new-card-descr">Description</label>
   <input type="text" id="new-card-descr" class="new-card_input" (blur)="checkFormStatus(this.adminForm)" formControlName="cardDescription">

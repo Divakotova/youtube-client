@@ -8,7 +8,6 @@ export class AdminService {
   }
 
   public checkFormStatus(form: FormGroup): boolean {
-    const disabled = form.status === 'VALID' ? false : true;
-    return disabled;
+    return !(form.status === 'VALID');
   }
 }

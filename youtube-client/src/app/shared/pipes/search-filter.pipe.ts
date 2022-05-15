@@ -11,6 +11,10 @@ export class SearchFilterPipe implements PipeTransform {
     direction: boolean,
   ): SearchItem[] | [] {
     if (args === '') return value;
+    return this.sortButton(args, direction, value);
+  }
+
+  private sortButton(args: string, direction: boolean, value: SearchItem[]) {
     if (args === 'data') {
       return direction
         ? value.sort(this.sortPublishedUp)
@@ -22,14 +26,18 @@ export class SearchFilterPipe implements PipeTransform {
         : value.sort(this.sortCountViewDown);
     }
     if (value && this.getFilter(value, args)) {
-      return value.sort((a, b) => {
-        const firstArg = this.getFilter(a, args)[args];
-        const secondArg = this.getFilter(b, args)[args];
-        return firstArg > secondArg ? 1 : firstArg < secondArg ? -1 : 0;
-      });
+      return this.sortInput(args, value);
     } else {
       return value;
     }
+  }
+
+  private sortInput(args: string, value: SearchItem[]) {
+    return value.sort((a, b) => {
+      const firstArg = this.getFilter(a, args)[args];
+      const secondArg = this.getFilter(b, args)[args];
+      return firstArg > secondArg ? 1 : firstArg < secondArg ? -1 : 0;
+    });
   }
 
   private sortPublishedUp(a: SearchItem, b: SearchItem): number {

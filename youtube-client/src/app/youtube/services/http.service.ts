@@ -14,7 +14,7 @@ export class HttpService {
   public getSearchList(args: string): Observable<any> {
     return this.http
       .get(
-        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${args}&type=video&key=${this.apiKey}`
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=15&q=${args}&type=video&key=${this.apiKey}`,
       )
       .pipe(
         map((res: any) => {
@@ -26,21 +26,21 @@ export class HttpService {
         }),
         mergeMap((id) => {
           return this.http.get(
-            `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=${id}&key=${this.apiKey}`
+            `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=${id}&key=${this.apiKey}`,
           );
-        })
+        }),
       );
   }
 
   public getDetailsId(id: string[]): Observable<any> {
     return this.http
       .get(
-        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=${id}&key=${this.apiKey}`
+        `https://youtube.googleapis.com/youtube/v3/videos?part=snippet&part=statistics&id=${id}&key=${this.apiKey}`,
       )
       .pipe(
         map((res: any) => {
           return res;
-        })
+        }),
       );
   }
 }

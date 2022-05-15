@@ -24,17 +24,17 @@ export class MainPageComponent implements OnInit, OnDestroy {
   constructor(
     private readonly coreService: CoreService,
     private youtubeService: YoutubeService,
-    private httpService: HttpService
+    private httpService: HttpService,
   ) {}
 
   ngOnInit(): void {
     this.searchSubscription = this.coreService.searchValue
       .pipe(debounceTime(600))
       .subscribe((searchValue) =>
-        searchValue.length >= 3 ? this.search(searchValue) : false
+        searchValue.length >= 3 ? this.search(searchValue) : false,
       );
     this.filterSubscription = this.coreService.filter$.subscribe((filter) =>
-      this.changeFilter(filter)
+      this.changeFilter(filter),
     );
   }
 

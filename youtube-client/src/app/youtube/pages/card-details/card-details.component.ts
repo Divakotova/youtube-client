@@ -30,7 +30,7 @@ export class CardDetailsComponent implements OnInit {
   constructor(
     private router: ActivatedRoute,
     private cardService: SearchItemService,
-    private httpService: HttpService
+    private httpService: HttpService,
   ) {}
 
   ngOnInit(): void {

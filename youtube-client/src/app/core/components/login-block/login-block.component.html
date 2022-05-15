@@ -3,7 +3,7 @@
     <button mat-raised-button color="primary">Admin</button>
   </a>
   <div class="login-block_button" (click)="logout()">
-    <h3 class="login-value" >{{this.login}}</h3>
+    <h3 class="login-value" >{{this.login | async}}</h3>
     <span class="material-icons">account_circle</span>
   </div>
 </div>
