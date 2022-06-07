@@ -1,0 +1,54 @@
+.more-button {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  margin-left: -60px;
+  bottom: 15px;
+  width: 120px;
+  height: 32px;
+}
+
+.search-form_submit {
+  width: 80px;
+  height: 24px;
+  line-height: 14px;
+}
+
+.settings-button {
+  width: 24px;
+  height: 24px;
+  margin-left: 10px;
+
+  .mat-icon {
+    width: 15px;
+    top: 4.5px;
+    left: 4.5px;
+  }
+}
+
+.mat-raised-button {
+  padding: 0;
+  min-width: 24px;
+  line-height: 15px;
+  border-top: 0;
+}
+
+.back-button {
+  width: 32px;
+  height: 32px;
+}
+
+.login-form_submit {
+  margin-top: 22px;
+  margin-left: 200px;
+  width: 124px;
+  height: 30px;
+}
+
+.new-card_submit {
+  margin-top: 22px;
+  margin-left: 193px;
+  width: 189px;
+  height: 37.74px;
+  filter: drop-shadow(2.51599px 0px 5.03198px #2F80ED);
+}

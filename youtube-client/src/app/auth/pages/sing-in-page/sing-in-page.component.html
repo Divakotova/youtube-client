@@ -1,0 +1,15 @@
+<h2 class="login-form_title">{{login}}</h2>
+<form [formGroup]="loginForm" novalidate (ngSubmit)="submit()">
+  <label class="form-title">login</label>
+  <input class="login-form_input" matInput placeholder="Please enter a login email" name="loginInput" formControlName="userEmail">
+   <div class="error-form" *ngIf="loginForm.controls['userEmail'].invalid && loginForm.controls['userEmail'].touched">
+    The login email is invalid</div>
+  <label class="form-title">password</label>
+  <input class="login-form_input" matInput placeholder="Please enter a password" name="passwordInput" formControlName="userPassword">
+  <div class="error-form" *ngIf="loginForm.controls['userPassword'].invalid && loginForm.controls['userPassword'].touched">
+    Your password isn't strong enough. It must be at least 8 characters, a mixture of both uppercase and lowercase letters,
+    a mixture of letters and numbers, inclusion of at least one special character, e.g., ! @ # ? ]
+  </div>
+  <app-button [buttonProps]="buttonProps" (click)="addLogin()"></app-button>
+</form>
+

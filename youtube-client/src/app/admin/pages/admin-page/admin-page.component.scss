@@ -1,0 +1,60 @@
+:host {
+  margin: auto;
+  margin-top: 123px;
+  display: flex;
+  flex-direction: column;
+  width: 482px;
+  min-height: 493.13px;
+  border-radius: 5px;
+  background-color: #F2F2F2;
+
+  .card-title {
+    margin: auto;
+    margin-top: 37px;
+    width: 382px;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 27px;
+  }
+
+  .new-card {
+    margin: 27px auto 32px auto;
+  }
+
+  .new-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .new-card_title {
+    margin-left: 5px;
+    margin-bottom: 3px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 15px;
+  }
+
+  .new-card_input {
+    margin-bottom: 15px;
+    width: 382px;
+    min-height: 35px;
+    background: #E0E0E0;
+    border: #E0E0E0;
+  }
+
+  .new-card_input.ng-touched.ng-invalid {
+    border:solid red 2px;
+  }
+
+  .new-card_input.ng-touched.ng-valid {
+    border:solid green 2px;
+  }
+
+  .error-form {
+    position: relative;
+    color: red;
+    font-size: 10px;
+    line-height: normal;
+  }
+}

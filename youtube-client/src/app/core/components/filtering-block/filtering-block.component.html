@@ -1,0 +1,9 @@
+<div class="filtering-block" *ngIf="filter">
+  <h3>Sorting by:</h3>
+  <div class="filtering-block_types">
+    <div *ngFor="let data of buttonProps">
+      <app-sorting-options [sortingType]="data"></app-sorting-options>
+    </div>
+    <app-input-for-filtering [filterValue]="filterValue"></app-input-for-filtering>
+  </div>
+</div>

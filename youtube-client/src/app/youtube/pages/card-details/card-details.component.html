@@ -1,0 +1,19 @@
+<div class="wrapper">
+  <a routerLink="/..">
+    <app-button [buttonProps]="buttonProps">
+    <mat-icon>arrow_back_ios</mat-icon>
+  </app-button>
+  </a>
+  <div class="details-wrapper">
+    <app-video-thumbnail [className]="classes" [response]="cardDetails.snippet.thumbnails.high"></app-video-thumbnail>
+    <div class="card-details">
+      <app-video-title [className]="classes" [response]="cardDetails.snippet.title"></app-video-title>
+      <h4 class="card-details_minor-title">Details</h4>
+      <p class="card-details_description">{{cardDetails.snippet.description}}</p>
+      <app-statistics-block [className]="classes" [cardDetails]="cardDetails"></app-statistics-block>
+      <div [style.backgroundColor]="underlining(cardDetails.snippet.publishedAt)" class="card-details_underlining"></div>
+    </div>
+  </div>
+</div>
+
+
